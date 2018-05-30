@@ -40,12 +40,18 @@
             settingsDict("ipAddress") = ipAddress.Text
             Console.WriteLine("An element with Key = already exists.")
         End Try
-        Try
-            settingsDict.Add("machineCounter", machineCounter.Text)
-        Catch
-            settingsDict("machineCounter") = machineCounter.Text
-            Console.WriteLine("An element with Key = already exists.")
-        End Try
+        If (CInt(machineCounter.Text) > 0) Then
+            Try
+
+                settingsDict.Add("machineCounter", machineCounter.Text)
+            Catch
+                settingsDict("machineCounter") = machineCounter.Text
+                Console.WriteLine("An element with Key = already exists.")
+            End Try
+        Else
+            ' machineCounter must be > 0
+        End If
+
         Try
             settingsDict.Add("redLimit", redLimit.Text)
 

@@ -8,21 +8,12 @@
     Dim yellowLimit As Integer
     Dim greenLimit As Integer
 
+    ' Flags to run tasks sequentially
     Private connectionAvailable As Boolean = False
     Private settingsAvailable As Boolean = False
 
     Public defaultSettings As New Dictionary(Of String, String)
     Public settingsArray = New String() {"ipAddress", "machineCounter", "redLimit", "yellowLimit", "greenLimit"}
-
-    'Public Sub New(ByVal machC As String, ByVal redLimit As String, ByVal yellowLimit As String, ByVal greenLimit As String)
-
-    'Me.machineCounter = CInt(machC)
-    'Me.redLimit = CInt(redLimit)
-    'Me.yellowLimit = CInt(yellowLimit)
-    'Me.greenLimit = CInt(greenLimit)
-
-
-    'End Sub
 
 
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
@@ -145,7 +136,7 @@
 
     End Sub
 
-    Private Sub btn1_Click(sender As Object, e As EventArgs) Handles btnStart.Click
+    Private Sub btStart_Click(sender As Object, e As EventArgs) Handles btnStart.Click
         applySettings()
         If (settingsAvailable) Then
             testConnection()
@@ -160,6 +151,7 @@
         'txtDebug.Text = Settings.settingsDict("machineCounter")
 
     End Sub
+
     Private Sub testConnection()
         Dim modbusClient As New EasyModbus.ModbusClient(ipAddress, modbusPort)
         Try
@@ -174,10 +166,12 @@
 
         End Try
     End Sub
+
     Private Sub showError(message As String)
         Dim Evento As Object
         Evento = MsgBox(message, MsgBoxStyle.Critical, "Error")
     End Sub
+
     Private Sub applySettings()
 
         If (Settings.settingsDict.Count > 0) Then
@@ -186,20 +180,16 @@
             Try
                 machineCounter = Settings.settingsDict("machineCounter")
             Catch ex As Exception
-                machineCounter = defaultSettings("machineCounter")
-                'txtDebug.Text = "Default value"
+                settingsAvailable = False
+                showError("machine Counter doesn't exist")
             End Try
             Try
                 ipAddress = Settings.settingsDict("ipAddress")
-                'txtDebug.Text = Settings.settingsDict("machineCounter")
             Catch ex As Exception
-                Console.WriteLine("settings {0}", ipAddress)
-                ipAddress = defaultSettings("ipAddress")
-
-                txtDebug.Text = "Default value"
+                settingsAvailable = False
+                showError("IP Address Error")
             End Try
 
-            'Timer2.Start()
 
         Else
             settingsAvailable = False

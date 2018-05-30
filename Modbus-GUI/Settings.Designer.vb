@@ -23,7 +23,10 @@ Partial Class Settings
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.ipAddress = New System.Windows.Forms.TextBox()
+        Me.Label8 = New System.Windows.Forms.Label()
         Me.txtDebug = New System.Windows.Forms.TextBox()
+        Me.addMachineC = New System.Windows.Forms.Button()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.advancedSettings = New System.Windows.Forms.CheckBox()
         Me.remMachineC = New System.Windows.Forms.Button()
@@ -37,13 +40,10 @@ Partial Class Settings
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.addMachineC = New System.Windows.Forms.Button()
         Me.btnCancel = New System.Windows.Forms.Button()
         Me.btnOK = New System.Windows.Forms.Button()
         Me.btnDefault = New System.Windows.Forms.Button()
         Me.BackgroundWorker1 = New System.ComponentModel.BackgroundWorker()
-        Me.ipAddress = New System.Windows.Forms.TextBox()
-        Me.Label8 = New System.Windows.Forms.Label()
         Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -70,12 +70,39 @@ Partial Class Settings
         Me.Panel1.Size = New System.Drawing.Size(375, 326)
         Me.Panel1.TabIndex = 0
         '
+        'ipAddress
+        '
+        Me.ipAddress.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        Me.ipAddress.Location = New System.Drawing.Point(211, 14)
+        Me.ipAddress.MaxLength = 20
+        Me.ipAddress.Name = "ipAddress"
+        Me.ipAddress.Size = New System.Drawing.Size(148, 22)
+        Me.ipAddress.TabIndex = 14
+        '
+        'Label8
+        '
+        Me.Label8.AutoSize = True
+        Me.Label8.Location = New System.Drawing.Point(7, 19)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(76, 17)
+        Me.Label8.TabIndex = 13
+        Me.Label8.Text = "IP Address"
+        '
         'txtDebug
         '
         Me.txtDebug.Location = New System.Drawing.Point(211, 229)
         Me.txtDebug.Name = "txtDebug"
         Me.txtDebug.Size = New System.Drawing.Size(100, 22)
         Me.txtDebug.TabIndex = 12
+        '
+        'addMachineC
+        '
+        Me.addMachineC.Location = New System.Drawing.Point(300, 48)
+        Me.addMachineC.Name = "addMachineC"
+        Me.addMachineC.Size = New System.Drawing.Size(20, 23)
+        Me.addMachineC.TabIndex = 2
+        Me.addMachineC.Text = "+"
+        Me.addMachineC.UseVisualStyleBackColor = True
         '
         'Label7
         '
@@ -188,15 +215,6 @@ Partial Class Settings
         Me.Label1.TabIndex = 1
         Me.Label1.Text = "Settings"
         '
-        'addMachineC
-        '
-        Me.addMachineC.Location = New System.Drawing.Point(300, 48)
-        Me.addMachineC.Name = "addMachineC"
-        Me.addMachineC.Size = New System.Drawing.Size(20, 23)
-        Me.addMachineC.TabIndex = 2
-        Me.addMachineC.Text = "+"
-        Me.addMachineC.UseVisualStyleBackColor = True
-        '
         'btnCancel
         '
         Me.btnCancel.Location = New System.Drawing.Point(52, 387)
@@ -223,22 +241,6 @@ Partial Class Settings
         Me.btnDefault.TabIndex = 5
         Me.btnDefault.Text = "Default"
         Me.btnDefault.UseVisualStyleBackColor = True
-        '
-        'ipAddress
-        '
-        Me.ipAddress.Location = New System.Drawing.Point(211, 14)
-        Me.ipAddress.Name = "ipAddress"
-        Me.ipAddress.Size = New System.Drawing.Size(148, 22)
-        Me.ipAddress.TabIndex = 14
-        '
-        'Label8
-        '
-        Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(7, 19)
-        Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(76, 17)
-        Me.Label8.TabIndex = 13
-        Me.Label8.Text = "IP Address"
         '
         'Settings
         '
