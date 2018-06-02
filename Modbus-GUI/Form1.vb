@@ -36,9 +36,9 @@
         ' Valor 50 es equivalente a rgba(1, 255, 0, 0)
 
         Dim number As Integer
-        Dim redLimit As Integer = CInt(defaultSettings("redLimit"))
-        Dim yellowLimit As Integer = CInt(defaultSettings("yellowLimit"))
-        Dim greenLimit As Integer = CInt(defaultSettings("greenLimit"))
+        Dim redLimit As Integer = redLimit
+        Dim yellowLimit As Integer = yellowLimit
+        Dim greenLimit As Integer = greenLimit
 
         Dim result As Boolean = Int32.TryParse(txtbox1.Text, number)
         If result Then
@@ -179,6 +179,24 @@
 
             Try
                 machineCounter = Settings.settingsDict("machineCounter")
+            Catch ex As Exception
+                settingsAvailable = False
+                showError("machine Counter doesn't exist")
+            End Try
+            Try
+                redLimit = Settings.settingsDict("redLimit")
+            Catch ex As Exception
+                settingsAvailable = False
+                'showError("machine Counter doesn't exist")
+            End Try
+            Try
+                yellowLimit = Settings.settingsDict("yellowLimit")
+            Catch ex As Exception
+                settingsAvailable = False
+                showError("machine Counter doesn't exist")
+            End Try
+            Try
+                greenLimit = Settings.settingsDict("greenLimit")
             Catch ex As Exception
                 settingsAvailable = False
                 showError("machine Counter doesn't exist")
